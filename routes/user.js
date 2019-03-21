@@ -56,4 +56,4 @@ userRouter.delete('/:id', (req, res) => {
         });
 });
 
-module.exports = userRouter;
+module.exports = { userRouter };
