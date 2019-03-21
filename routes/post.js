@@ -54,3 +54,5 @@ postRouter.delete('/:id', (req, res) => {
             res.json(err.toString());
         });
 });
+
+module.exports = postRouter;

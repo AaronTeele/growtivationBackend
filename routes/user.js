@@ -56,9 +56,4 @@ userRouter.delete('/:id', (req, res) => {
         });
 });
 
-
-// -- INSERT INTO users (name, email) VALUES
-// -- ('John', 'john@email.com'), ('Michelle', 'michelle@email.com');
-
-// -- INSERT INTO pets (owner, type, name, age) VALUES
-// -- (2, 'bunny', 'Marshmello', 1), (2, 'dog', 'Chai', 2), (1, 'cat', 'Pixel', 5);
+module.exports = userRouter;

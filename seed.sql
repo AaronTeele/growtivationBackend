@@ -26,17 +26,17 @@ CREATE TABLE users (
 
 CREATE TABLE goals (
   id SERIAL PRIMARY KEY,
-  userID REFERENCES users(id),
-  goalName VARCHAR NOT NULL
-  status VARCHAR
+  userID INT REFERENCES users(id),
+  goalName VARCHAR NOT NULL,
+  goalStatus VARCHAR
 )
 
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   createdAt TIMESTAMP DEFAULT NOW(),
   updatedAt TIMESTAMP DEFAULT NOW(),
-  community REFERENCES community(id) NOT NULL,
-  authorID REFERENCES users(id) NOT NULL,
+  community INT REFERENCES community(id) NOT NULL,
+  authorID INT REFERENCES users(id) NOT NULL,
   caption VARCHAR,
 );
 
@@ -44,8 +44,8 @@ CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   createdAt TIMESTAMP DEFAULT NOW(),
   updatedAt TIMESTAMP DEFAULT NOW(),
-  postID REFERENCES posts(id) NOT NULL,
-  authorID REFERENCES users(id) NOT NULL,
+  postID INT REFERENCES posts(id) NOT NULL,
+  authorID INT REFERENCES users(id) NOT NULL,
   content_text VARCHAR,
 
 );
@@ -53,13 +53,13 @@ CREATE TABLE comments (
 CREATE TABLE likes (
   id SERIAL PRIMARY KEY,
   createdAt TIMESTAMP DEFAULT NOW(),
-  person_liked_id REFERENCES users(id) NOT NULL,
-  postID REFERENCES posts(id) NOT NULL,
+  person_liked_id INT REFERENCES users(id) NOT NULL,
+  postID INT REFERENCES posts(id) NOT NULL,
 );
 
 CREATE UNIQUE INDEX single_like ON likes (postID, person_liked_id)
 
 CREATE TABLE followers (
-  person_following_id REFERENCES users(id) NOT NULL,
-  person_being_followed_id REFERENCES users(id) NOT NULL,
+  person_following_id INT REFERENCES users(id) NOT NULL,
+  person_being_followed_id INT REFERENCES users(id) NOT NULL,
 );

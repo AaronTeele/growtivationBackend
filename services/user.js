@@ -1,5 +1,4 @@
-const pgp = require('pg-promise')({});
-const db = pgp('postgres://localhost/growtivation');
+const db = require('./pgpromise')
 
 const UserService = {};
 
