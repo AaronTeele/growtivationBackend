@@ -1,14 +1,6 @@
 DROP DATABASE IF EXISTS growtivation;
 CREATE DATABASE growtivation;
 
-CREATE TABLE community (
-  id SERIAL PRIMARY KEY,
-  createdAt TIMESTAMP DEFAULT NOW(),
-  updatedAt TIMESTAMP DEFAULT NOW(),
-  communityName VARCHAR NOT NULL,
-  testROW VARCHAR
-);
-
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   createdAt TIMESTAMP DEFAULT NOW(),
@@ -26,15 +18,13 @@ CREATE TABLE users (
 CREATE TABLE goals (
   id SERIAL PRIMARY KEY,
   userID INT REFERENCES users(id),
-  goalName VARCHAR NOT NULL,
-  goalStatus VARCHAR
+  goal VARCHAR NOT NULL,
 );
 
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   createdAt TIMESTAMP DEFAULT NOW(),
   updatedAt TIMESTAMP DEFAULT NOW(),
-  community INT REFERENCES community(id) NOT NULL,
   authorID INT REFERENCES users(id) NOT NULL,
   caption VARCHAR
 );

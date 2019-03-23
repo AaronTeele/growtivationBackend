@@ -5,7 +5,11 @@ const express = require('express');
 const app = express();
 
 const userRouter = require('./routes/user');
-//const postRouter = require('./routes/post');
+const postRouter = require('./routes/post');
+const goalRouter = require('./routes/goal');
+const commentRouter = require('./routes/comment');
+const likeRouter = require('./routes/like');
+const followerRouter = require('./routes/follower');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -15,8 +19,20 @@ app.use(bodyParser.json())
 // user routes
 app.use('/user', userRouter);
 
-//post routes
-// app.use('/post', postRouter);
+// post routes
+app.use('/post/:id', postRouter);
+
+// goal routes
+app.use('/goals/:id', goalRouter);
+
+// comment routes
+app.use('/comments/:id', commentRouter);
+
+// like routes
+app.use('/like/:id', likeRouter);
+
+// follower routes
+app.use('/follower/:id', followerRouter);
 
 module.exports = { app }
 const port = process.env.PORT || 3000;

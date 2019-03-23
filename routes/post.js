@@ -2,24 +2,25 @@ const express = require('express');
 const postRouter = express.Router();
 const PostService = require('../services/post');
 
-// POST - CREATE post
+// POST - CREATE POST
 postRouter.post('/', (req, res) => {
-    const { authorID, caption, image_url_array } = req.body;
+    const { id } = req.params;
+    const { caption, imgURL } = req.body;
 
-    PostService.create(authorID, caption, image_url_array)
+    PostService.create( id, caption, imgURL)
         .then(() => {
-            res.json({ success: `post created.` });
+            res.json({ success: `Post successfully created.` });
         })
         .catch(err => {
             res.json(err.toString());
         })
 });
 
-// GET - READ USER
-postRouter.get('/:id', (req, res) => {
-    const { id } = req.params;
+// GET - READ POST
+postRouter.get('/:postID', (req, res) => {
+    const { postID } = req.params;
 
-    PostService.read(id)
+    PostService.read(postID)
         .then(data => {
             res.json(data);
         })
@@ -28,27 +29,27 @@ postRouter.get('/:id', (req, res) => {
         })
 });
 
-// PUT - UPDATE USER
-postRouter.put('/:id', (req, res) => {
-    const { username, email, firstName, lastName, city, state, zipcode } = req.body;
-    const { id } = req.params;
-
-    PostService.update(id, username, email, firstName, lastName, city, state, zipcode)
+// PUT - UPDATE POST
+postRouter.put('/:postID', (req, res) => {
+    const { postID } = req.params;
+    const { caption } = req.body;
+    
+    PostService.update(postID, caption)
         .then(() => {
-            res.json({ success: `User with name: ${name} updated.` });
+            res.json({ success: `Post updated.` });
         })
         .catch(err => {
             res.json(err.toString());
         })
 });
 
-// DELETE - DELETE USER
-postRouter.delete('/:id', (req, res) => {
-    const { id } = req.params;
+// DELETE - DELETE POST
+postRouter.delete('/:postID', (req, res) => {
+    const { postID } = req.params;
 
-    PostService.delete(id)
+    PostService.delete(postID)
         .then(() => {
-            res.json({ success: `User with ID: ${id} deleted.` });
+            res.json({ success: `Post deleted.` });
         })
         .catch(err => {
             res.json(err.toString());

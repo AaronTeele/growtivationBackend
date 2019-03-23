@@ -1,12 +1,12 @@
 const express = require('express');
-const userRouter = express.Router();
-const UserService = require('../services/user');
+const followerRouter = express.Router();
+const FollowerService = require('../services/follower');
 
-// POST - CREATE USER
-userRouter.post('/', (req, res) => {
+// POST - CREATE FOLLOWER
+followerRouter.post('/', (req, res) => {
     const { username, email, firstName, lastName, city, state, zipcode } = req.body;
 
-    UserService.create(username, email, firstName, lastName, city, state, zipcode)
+    FollowerService.create(username, email, firstName, lastName, city, state, zipcode)
         .then(() => {
             res.json({ success: `User with name: ${name} created.` });
         })
@@ -15,11 +15,11 @@ userRouter.post('/', (req, res) => {
         })
 });
 
-// GET - READ USER
-userRouter.get('/:id', (req, res) => {
+// GET - READ FOLLOWER
+followerRouter.get('/:id', (req, res) => {
     const { id } = req.params;
 
-    UserService.read(id)
+    FollowerService.read(id)
         .then(data => {
             res.json(data);
         })
@@ -28,12 +28,13 @@ userRouter.get('/:id', (req, res) => {
         })
 });
 
- // PUT - UPDATE USER
-userRouter.put('/:id', (req, res) => {
-    const { username, email, firstName, lastName, city, state, zipcode } = req.body;
+// PUT - UPDATE FOLLOWER
+followerRouter.put('/:id', (req, res) => {
     const { id } = req.params;
+    const { username, email, firstName, lastName, city, state, zipcode } = req.body;
+    
 
-    UserService.update(id, username, email, firstName, lastName, city, state, zipcode)
+    FollowerService.update(id, username, email, firstName, lastName, city, state, zipcode)
         .then(() => {
             res.json({ success: `User with name: ${name} updated.` });
         })
@@ -42,12 +43,11 @@ userRouter.put('/:id', (req, res) => {
         })
 });
 
-
-// DELETE - DELETE USER
-userRouter.delete('/:id', (req, res) => {
+// DELETE - DELETE FOLLOWER
+followerRouter.delete('/:id', (req, res) => {
     const { id } = req.params;
 
-    UserService.delete(id)
+    FollowerService.delete(id)
         .then(() => {
             res.json({ success: `User with ID: ${id} deleted.` });
         })
@@ -56,4 +56,4 @@ userRouter.delete('/:id', (req, res) => {
         });
 });
 
-module.exports =  userRouter;
+module.exports = followerRouter;

@@ -2,20 +2,20 @@ const db = require('./pgpromise')
 
 const PostService = {};
 
-PostService.create = (authorID, caption, image_url_array) => {
-  return db.none('INSERT INTO users (${authorID}, ${caption}, ${image_url_array}, ${lastName}, ${city}, ${state}, ${zipcode}) VALUES (username, email, firstName, lastName, city, state, zipcode)', {})
+PostService.create = (id, caption, imgURL) => {
+  return db.none('INSERT INTO posts (authorID, caption, imgURL) VALUES ${id}, ${caption}, ${imgURL})', {id, caption, imgURL})
 };
 
-PostService.read = (id) => {
-  return db.one('SELECT username FROM users WHERE id=${id}', {id: id});
+PostService.read = (postID) => {
+  return db.one('SELECT username FROM users WHERE id=${postID}', {postID});
 };
 
-PostService.update = (id) => {
-  return db.none('UPDATE users SET username=${username}, email=${email}, firstName=${firstName}, lastName=${lastname}, city=${city}, state=${state}, zipcode=${zipcode} WHERE id=${id}', {});
+PostService.update = (postID, caption) => {
+  return db.none('UPDATE posts SET caption=${caption}, WHERE id=${postID}', {postID, caption});
 };
 
-PostService.delete = (id) => {
-  return db.none('DELETE FROM users WHERE user=${id};', {id});
+PostService.delete = (postID) => {
+  return db.none('DELETE FROM posts WHERE id=${postID};', {postID});
 };
 
 module.exports = PostService;
