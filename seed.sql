@@ -1,6 +1,3 @@
-DROP DATABASE IF EXISTS growtivation;
-CREATE DATABASE growtivation;
-
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   createdAt TIMESTAMP DEFAULT NOW(),
