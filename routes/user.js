@@ -4,9 +4,9 @@ const UserService = require('../services/user');
 
 // POST - CREATE FOLLOWER
 userRouter.post('/', (req, res) => {
-    const { username, email, firstName, lastName, city, state, zipcode } = req.body;
+    const { username, email, firstName, lastName, city, state_of_residence, zipcode } = req.body;
 
-    UserService.create(username, email, firstName, lastName, city, state, zipcode)
+    UserService.create(username, email, firstName, lastName, city, state_of_residence, zipcode)
         .then(() => {
             res.json({ success: `User with name: ${username} created.` });
         })

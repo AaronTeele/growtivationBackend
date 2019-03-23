@@ -2,8 +2,8 @@ const db = require('./pgpromise');
 
 const UserService = {};
 
-UserService.create = (username, email, firstName, lastName, city, state, zipcode) => {
-  return db.one('INSERT INTO users (username, email, firstName, lastName, city, state_of_residence, zipcode) VALUES  (${username}, ${email}, ${firstName}, ${lastName}, ${city}, ${state}, ${zipcode})', {username, email, firstName, lastName, city, state, zipcode})
+UserService.create = (username, email, firstName, lastName, city, state_of_residence, zipcode) => {
+  return db.none('INSERT INTO users (username, email, firstName, lastName, city, state_of_residence, zipcode) VALUES  (${username}, ${email}, ${firstName}, ${lastName}, ${city}, ${state_of_residence}, ${zipcode})', {username, email, firstName, lastName, city, state_of_residence, zipcode})
 };
 
 UserService.read = (id) => {
@@ -16,7 +16,7 @@ UserService.update = (id, username, email, firstName, lastName, city, state, zip
 
 
 UserService.delete = (id) => {
-  return db.none('DELETE FROM users WHERE user=${id};', {id});
+  return db.none('DELETE * FROM users WHERE user=${id};', {id});
 };
 
 module.exports = UserService;

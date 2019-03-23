@@ -12,7 +12,7 @@ CREATE TABLE users (
   city VARCHAR NOT NULL,
   state_of_residence VARCHAR NOT NULL,
   zipcode INT NOT NULL,
-  avatar VARCHAR
+  avatar VARCHAR,
 );
 
 CREATE TABLE goals (
@@ -49,3 +49,4 @@ CREATE TABLE followers (
   person_following_id INT REFERENCES users(id) NOT NULL,
   person_being_followed_id INT REFERENCES users(id) NOT NULL
 );
+
