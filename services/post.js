@@ -3,7 +3,7 @@ const db = require('./pgpromise')
 const PostService = {};
 
 PostService.create = (authorID, caption, image_url_array) => {
-  return db.none('INSERT INTO users (${authorID}, ${caption}, ${image_url_array}, ${lastName}, ${city}, ${state}, ${zipcode}) VALUES (username, email, firstName, lastName, city, state, zipcode)', {username, email, firstName, lastName, city, state, zipcode})
+  return db.none('INSERT INTO users (${authorID}, ${caption}, ${image_url_array}, ${lastName}, ${city}, ${state}, ${zipcode}) VALUES (username, email, firstName, lastName, city, state, zipcode)', {})
 };
 
 PostService.read = (id) => {
@@ -11,7 +11,7 @@ PostService.read = (id) => {
 };
 
 PostService.update = (id) => {
-  return db.none('UPDATE users SET username=${username}, email=${email}, firstName=${firstName}, lastName=${lastname}, city=${city}, state=${state}, zipcode=${zipcode} WHERE id=${id}', {username, email, firstName, lastName, city, state, zipcode});
+  return db.none('UPDATE users SET username=${username}, email=${email}, firstName=${firstName}, lastName=${lastname}, city=${city}, state=${state}, zipcode=${zipcode} WHERE id=${id}', {});
 };
 
 PostService.delete = (id) => {
