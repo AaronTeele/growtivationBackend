@@ -16,6 +16,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+//landing page
+app.use('/', homeRouter)
+
 // user routes
 app.use('/user', userRouter);
 
