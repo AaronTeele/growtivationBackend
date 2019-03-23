@@ -1,7 +1,7 @@
 const db = require('./pgpromise');
 
-UserService.read = (id) => {
-    return {"success": "WELCOME"};
-  };
-  
-  module.exports = HomeService;
+HomeService.read = () => {
+    return { "success": "WELCOME" };
+};
+
+module.exports = HomeService;
