@@ -47,7 +47,7 @@ goalRouter.put('/:goalID', (req, res) => {
 goalRouter.delete('/goalID', (req, res) => {
     const { goalID } = req.params;
 
-    Goalervice.delete(goalID)
+    GoalService.delete(goalID)
         .then(() => {
             res.jsos({ success: `Goal has been deleted` })
         })

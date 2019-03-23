@@ -3,11 +3,11 @@ const db = require('./pgpromise');
 const UserService = {};
 
 UserService.create = (username, email, firstName, lastName, city, state, zipcode) => {
-  return db.none('INSERT INTO users (${username}, ${email}, ${firstName}, ${lastName}, ${city}, ${state}, ${zipcode}) VALUES (username, email, firstName, lastName, city, state, zipcode)', {username, email, firstName, lastName, city, state, zipcode})
+  return db.one('INSERT INTO users (username, email, firstName, lastName, city, state_of_residence, zipcode) VALUES  (${username}, ${email}, ${firstName}, ${lastName}, ${city}, ${state}, ${zipcode})', {username, email, firstName, lastName, city, state, zipcode})
 };
 
 UserService.read = (id) => {
-  return db.one('SELECT username FROM users WHERE id=${id}', {id});
+  return db.one('SELECT * FROM users WHERE id=${id}', {id});
 };
 
 UserService.update = (id, username, email, firstName, lastName, city, state, zipcode) => {
