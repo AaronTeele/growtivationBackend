@@ -3,7 +3,7 @@ const homeRouter = express.Router();
 const HomeService = require('../services/home');
 
 // GET - READ FOLLOWER
-homeRouter.get('', (req, res) => {
+homeRouter.get('/', (req, res) => {
 
     HomeService.read()
         .then(data => {
