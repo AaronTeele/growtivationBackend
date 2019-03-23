@@ -1,13 +1,12 @@
 DROP DATABASE IF EXISTS growtivation;
 CREATE DATABASE growtivation;
 
-\c growtivation;
-
 CREATE TABLE community (
   id SERIAL PRIMARY KEY,
   createdAt TIMESTAMP DEFAULT NOW(),
   updatedAt TIMESTAMP DEFAULT NOW(),
-  communityName VARCHAR NOT NULL
+  communityName VARCHAR NOT NULL,
+  testROW VARCHAR
 );
 
 CREATE TABLE users (
@@ -55,7 +54,6 @@ CREATE TABLE likes (
   person_liked_id INT REFERENCES users(id) NOT NULL,
   postID INT REFERENCES posts(id) NOT NULL
 );
-
 
 CREATE TABLE followers (
   person_following_id INT REFERENCES users(id) NOT NULL,

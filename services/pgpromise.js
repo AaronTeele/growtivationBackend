@@ -1,4 +1,6 @@
+const { DATABASE_URL } = process.env
 const pgp = require('pg-promise')({});
-const db = pgp('postgres://postgres@localhost:5432/growtivation');
+pgp.pg.defaults.ssl = true;
+const db = pgp(DATABASE_URL);
 
 module.exports = db;
