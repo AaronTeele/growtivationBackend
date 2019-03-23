@@ -10,6 +10,7 @@ const goalRouter = require('./routes/goal');
 const commentRouter = require('./routes/comment');
 const likeRouter = require('./routes/like');
 const followerRouter = require('./routes/follower');
+const homeRouter = require('./routes/home')
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
