@@ -1,11 +1,10 @@
 const express = require('express');
 const homeRouter = express.Router();
-const HomeService = require('../services/home');
+const {HomeService} = require('../services/home');
 
 // GET - READ FOLLOWER
 homeRouter.get('/', (req, res) => {
-
-    HomeService.read();
+    res.json(HomeService.read());
 });
 
 
