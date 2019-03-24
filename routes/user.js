@@ -35,10 +35,17 @@ userRouter.put('/:id', (req, res) => {
 
     UserService.read(id)
     .then((data) => {
-        res.send(data)
+        UserService.update(id, username, email, firstName, lastName, city, state_of_residence, zipcode)
+        .then(data => {
+            res.json(data);
+        })
+        .catch(err => {
+            res.json(err.toString());
+        })
     })
     .catch(err => {
         res.json(err.toString());
+        
     })
     // UserService.update(id, username, email, firstName, lastName, city, state_of_residence, zipcode)
     //     .then(() => {
