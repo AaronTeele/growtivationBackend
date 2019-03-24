@@ -11,15 +11,7 @@ UserService.read = (id) => {
 };
 
 UserService.update = (id, username, email, firstName, lastName, city, state_of_residence, zipcode) => {
-  UserService.read(id)
-    .then(() => {
-      console.log(1)
-      return db.none('UPDATE users SET username=${username}, email=${email}, firstName=${firstName}, lastName=${lastName}, city=${city}, state_of_residence=${state_of_residence}, zipcode=${zipcode} WHERE id=${id};', { id, username, email, firstName, lastName, city, state_of_residence, zipcode })
-    })
-    .catch(err => {
-      console.log(2)
-      res.json(err.toString());
-  })
+  return db.none('UPDATE users SET username=${username}, email=${email}, firstName=${firstName}, lastName=${lastName}, city=${city}, state_of_residence=${state_of_residence}, zipcode=${zipcode} WHERE id=${id};', { id, username, email, firstName, lastName, city, state_of_residence, zipcode });
 };
 
 
