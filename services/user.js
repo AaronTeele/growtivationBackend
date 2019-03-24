@@ -19,4 +19,3 @@ UserService.delete = (id) => {
   return db.none('DELETE * FROM users WHERE user=${id};', {id});
 };
 
-module.exports = UserService;

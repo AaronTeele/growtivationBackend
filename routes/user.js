@@ -36,7 +36,7 @@ userRouter.put('/:id', (req, res) => {
 
     UserService.update(id, username, email, firstName, lastName, city, state, zipcode)
         .then(() => {
-            res.json({ success: `User with name: ${name} updated.` });
+            res.json({ success: `User with name: ${username} updated.` });
         })
         .catch(err => {
             res.json(err.toString());
