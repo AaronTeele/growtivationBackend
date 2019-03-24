@@ -11,12 +11,12 @@ UserService.read = (id) => {
 };
 
 UserService.update = (id, username, email, firstName, lastName, city, state_of_residence, zipcode) => {
-  return db.none('UPDATE users SET username=${username}, email=${email}, firstName=${firstName}, lastName=${lastName}, city=${city}, state_of_residence=${state_of_residence}, zipcode=${zipcode} WHERE id=${id};', {id, username, email, firstName, lastName, city, state_of_residence, zipcode});
+  UserService.read(id) ? db.none('UPDATE users SET username=${username}, email=${email}, firstName=${firstName}, lastName=${lastName}, city=${city}, state_of_residence=${state_of_residence}, zipcode=${zipcode} WHERE id=${id};', {id, username, email, firstName, lastName, city, state_of_residence, zipcode}) : "user not found";
 };
 
 
 UserService.delete = (id) => {
-  UserService.read(id) ? db.none('DELETE FROM users WHERE id=${id};', {id}) : "user not found";
+  return db.none('DELETE FROM users WHERE id=${id};', {id});
 };
 
 module.exports = UserService;
