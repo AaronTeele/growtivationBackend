@@ -31,7 +31,7 @@ userRouter.get('/:id', (req, res) => {
 // PUT - UPDATE USER
 userRouter.put('/:id', (req, res) => {
     const { id } = req.params;
-    const { username, email, firstName, lastName, city, state, zipcode } = req.body;
+    const { username, email, firstName, lastName, city, state_of_residence, zipcode } = req.body;
 
 
     UserService.update(id, username, email, firstName, lastName, city, state_of_residence, zipcode)
