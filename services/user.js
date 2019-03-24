@@ -16,6 +16,6 @@ UserService.update = (id, username, email, firstName, lastName, city, state, zip
 
 
 UserService.delete = (id) => {
-  return db.none('DELETE * FROM users WHERE user=${id};', {id});
+  return db.none('DELETE * FROM users WHERE id=${id};', {id});
 };
 
