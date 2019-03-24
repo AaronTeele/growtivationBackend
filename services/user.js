@@ -15,7 +15,9 @@ UserService.update = (id, username, email, firstName, lastName, city, state_of_r
     .then(() => {
       return db.none('UPDATE users SET username=${username}, email=${email}, firstName=${firstName}, lastName=${lastName}, city=${city}, state_of_residence=${state_of_residence}, zipcode=${zipcode} WHERE id=${id};', { id, username, email, firstName, lastName, city, state_of_residence, zipcode })
     })
-    .catch(err => err)
+    .catch(err => {
+      res.json(err.toString());
+  })
 };
 
 
