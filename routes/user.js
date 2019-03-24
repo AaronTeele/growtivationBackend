@@ -34,7 +34,7 @@ userRouter.put('/:id', (req, res) => {
     const { username, email, firstName, lastName, city, state_of_residence, zipcode } = req.body;
 
     UserService.read(id)
-    .then((data) => {
+    .then(() => {
         UserService.update(id, username, email, firstName, lastName, city, state_of_residence, zipcode)
         .then(data => {
             res.json(data);
@@ -47,13 +47,6 @@ userRouter.put('/:id', (req, res) => {
         res.json(err.toString());
         
     })
-    // UserService.update(id, username, email, firstName, lastName, city, state_of_residence, zipcode)
-    //     .then(() => {
-    //         res.json({ success: `User with name: ${username} updated.` });
-    //     })
-    //     .catch(err => {
-    //         res.json(err.toString());
-    //     })
 });
 
 // DELETE - DELETE USER
