@@ -2,7 +2,7 @@ const express = require('express');
 const userRouter = express.Router();
 const UserService = require('../services/user');
 
-// POST - CREATE FOLLOWER
+// POST - CREATE USER
 userRouter.post('/', (req, res) => {
     const { username, email, firstName, lastName, city, state_of_residence, zipcode } = req.body;
 
@@ -15,7 +15,7 @@ userRouter.post('/', (req, res) => {
         })
 });
 
-// GET - READ FOLLOWER
+// GET - READ USER
 userRouter.get('/:id', (req, res) => {
     const { id } = req.params;
 
@@ -28,7 +28,7 @@ userRouter.get('/:id', (req, res) => {
         })
 });
 
-// PUT - UPDATE FOLLOWER
+// PUT - UPDATE USER
 userRouter.put('/:id', (req, res) => {
     const { id } = req.params;
     const { username, email, firstName, lastName, city, state, zipcode } = req.body;
@@ -43,7 +43,7 @@ userRouter.put('/:id', (req, res) => {
         })
 });
 
-// DELETE - DELETE FOLLOWER
+// DELETE - DELETE USER
 userRouter.delete('/:id', (req, res) => {
     const { id } = req.params;
 
