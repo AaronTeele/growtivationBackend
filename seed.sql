@@ -9,13 +9,13 @@ CREATE TABLE users (
   city VARCHAR NOT NULL,
   state_of_residence VARCHAR NOT NULL,
   zipcode INT NOT NULL,
-  avatar VARCHAR,
+  avatar VARCHAR
 );
 
 CREATE TABLE goals (
   id SERIAL PRIMARY KEY,
   userID INT REFERENCES users(id),
-  goal VARCHAR NOT NULL,
+  goal VARCHAR NOT NULL
 );
 
 CREATE TABLE posts (
