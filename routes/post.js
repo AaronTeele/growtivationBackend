@@ -26,7 +26,6 @@ postRouter.get('/:post_id', (req, res) => {
         })
         .catch(err => {
             res.json(err.toString());
-        })
 });
 
 // PUT - UPDATE POST

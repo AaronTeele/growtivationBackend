@@ -1,3 +1,6 @@
+DROP DATABASE growtivation if exists;
+CREATE DATABASE growtivation;
+
 CREATE TABLE users
 (
   id SERIAL PRIMARY KEY,
