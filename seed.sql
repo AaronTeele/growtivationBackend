@@ -1,7 +1,6 @@
-CREATE TABLE users (
+CREATE TABLE users
+(
   id SERIAL PRIMARY KEY,
-  createdAt TIMESTAMP DEFAULT NOW(),
-  updatedAt TIMESTAMP DEFAULT NOW(),
   username VARCHAR NOT NULL,
   firstName VARCHAR NOT NULL,
   lastName VARCHAR NOT NULL,
@@ -9,40 +8,47 @@ CREATE TABLE users (
   city VARCHAR NOT NULL,
   state_of_residence VARCHAR NOT NULL,
   zipcode INT NOT NULL,
-  avatar VARCHAR
+  avatar VARCHAR,
+  createdAt TIMESTAMP DEFAULT NOW(),
+  updatedAt TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE goals (
+CREATE TABLE goals
+(
   id SERIAL PRIMARY KEY,
   userID INT REFERENCES users(id),
   goal VARCHAR NOT NULL
 );
 
-CREATE TABLE posts (
+CREATE TABLE posts
+(
   id SERIAL PRIMARY KEY,
-  createdAt TIMESTAMP DEFAULT NOW(),
-  updatedAt TIMESTAMP DEFAULT NOW(),
   authorID INT REFERENCES users(id) NOT NULL,
-  caption VARCHAR
+  caption VARCHAR,
+  createdAt TIMESTAMP DEFAULT NOW(),
+  updatedAt TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE comments (
+CREATE TABLE comments
+(
   id SERIAL PRIMARY KEY,
-  createdAt TIMESTAMP DEFAULT NOW(),
-  updatedAt TIMESTAMP DEFAULT NOW(),
   postID INT REFERENCES posts(id) NOT NULL,
   authorID INT REFERENCES users(id) NOT NULL,
-  content_text VARCHAR
+  content_text VARCHAR,
+  createdAt TIMESTAMP DEFAULT NOW(),
+  updatedAt TIMESTAMP DEFAULT NOW(),
 );
 
-CREATE TABLE likes (
+CREATE TABLE likes
+(
   id SERIAL PRIMARY KEY,
-  createdAt TIMESTAMP DEFAULT NOW(),
   person_liked_id INT REFERENCES users(id) NOT NULL,
   postID INT REFERENCES posts(id) NOT NULL
+  createdAt TIMESTAMP DEFAULT NOW(),
 );
 
-CREATE TABLE followers (
+CREATE TABLE followers
+(
   person_following_id INT REFERENCES users(id) NOT NULL,
   person_being_followed_id INT REFERENCES users(id) NOT NULL
 );
