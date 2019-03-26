@@ -5,9 +5,9 @@ const PostService = require('../services/post');
 // POST - CREATE POST
 postRouter.post('/', (req, res) => {
     const { id } = req.params;
-    const { caption, imgURL } = req.body;
+    const { caption, img_url } = req.body;
 
-    PostService.create( id, caption, imgURL)
+    PostService.create( id, caption, img_url)
         .then(() => {
             res.json({ success: `Post successfully created.` });
         })
@@ -17,10 +17,10 @@ postRouter.post('/', (req, res) => {
 });
 
 // GET - READ POST
-postRouter.get('/:postID', (req, res) => {
-    const { postID } = req.params;
+postRouter.get('/:post_id', (req, res) => {
+    const { post_id } = req.params;
 
-    PostService.read(postID)
+    PostService.read(post_id)
         .then(data => {
             res.json(data);
         })
@@ -30,11 +30,11 @@ postRouter.get('/:postID', (req, res) => {
 });
 
 // PUT - UPDATE POST
-postRouter.put('/:postID', (req, res) => {
-    const { postID } = req.params;
+postRouter.put('/:post_id', (req, res) => {
+    const { post_id } = req.params;
     const { caption } = req.body;
     
-    PostService.update(postID, caption)
+    PostService.update(post_id, caption)
         .then(() => {
             res.json({ success: `Post updated.` });
         })
@@ -44,10 +44,10 @@ postRouter.put('/:postID', (req, res) => {
 });
 
 // DELETE - DELETE POST
-postRouter.delete('/:postID', (req, res) => {
-    const { postID } = req.params;
+postRouter.delete('/:post_id', (req, res) => {
+    const { post_id } = req.params;
 
-    PostService.delete(postID)
+    PostService.delete(post_id)
         .then(() => {
             res.json({ success: `Post deleted.` });
         })

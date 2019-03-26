@@ -4,9 +4,9 @@ const UserService = require('../services/user');
 
 // POST - CREATE USER
 userRouter.post('/', (req, res) => {
-    const { username, email, firstName, lastName, city, state_of_residence, zipcode } = req.body;
+    const { username, email, first_name, last_name, city, state_of_residence, zipcode } = req.body;
 
-    UserService.create(username, email, firstName, lastName, city, state_of_residence, zipcode)
+    UserService.create(username, email, first_name, last_name, city, state_of_residence, zipcode)
         .then(() => {
             res.json({ success: `User with name: ${username} created.` });
         })
@@ -31,11 +31,11 @@ userRouter.get('/:id', (req, res) => {
 // PUT - UPDATE USER
 userRouter.put('/:id', (req, res) => {
     const { id } = req.params;
-    const { username, email, firstName, lastName, city, state_of_residence, zipcode } = req.body;
+    const { username, email, first_name, last_name, city, state_of_residence, zipcode } = req.body;
 
     UserService.read(id)
     .then(() => {
-        UserService.update(id, username, email, firstName, lastName, city, state_of_residence, zipcode)
+        UserService.update(id, username, email, first_name, last_name, city, state_of_residence, zipcode)
         .then(data => {
             res.json({success: `${username} info updated`});
         })
