@@ -8,10 +8,10 @@ userRouter.post('/', (req, res) => {
 
     UserService.create(username, email, first_name, last_name, city, state_of_residence, zipcode)
         .then(() => {
-            res.json({ success: `User with name: ${username} created.` });
+            res.json({ success: `User with name: ${username} created.` })
         })
         .catch(err => {
-            res.json(err.toString());
+            res.json(err.toString())
         })
 });
 
@@ -21,10 +21,10 @@ userRouter.get('/:id', (req, res) => {
 
     UserService.read(id)
         .then(data => {
-            res.json(data);
+            res.json(data)
         })
         .catch(err => {
-            res.json(err.toString());
+            res.json(err.toString())
         })
 });
 
@@ -37,6 +37,7 @@ userRouter.put('/:id', (req, res) => {
     .then(() => {
         UserService.update(id, username, email, first_name, last_name, city, state_of_residence, zipcode)
         .then(data => {
+            const { username } = data
             res.json({success: `${username} info updated`});
         })
         .catch(err => {
