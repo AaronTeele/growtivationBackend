@@ -1,5 +1,13 @@
-DROP DATABASE growtivation if exists;
-CREATE DATABASE growtivation;
+-- DROP DATABASE growtivation;
+-- CREATE DATABASE growtivation;
+
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS goals CASCADE;
+DROP TABLE IF EXISTS posts CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
+DROP TABLE IF EXISTS likes CASCADE;
+DROP TABLE IF EXISTS followers CASCADE;
+
 
 CREATE TABLE users
 (
@@ -12,6 +20,7 @@ CREATE TABLE users
   state_of_residence VARCHAR NOT NULL,
   zipcode INT NOT NULL,
   avatar VARCHAR,
+  auth_token VARCHAR,
   createdAt TIMESTAMP DEFAULT NOW(),
   updatedAt TIMESTAMP DEFAULT NOW()
 );
@@ -57,13 +66,12 @@ CREATE TABLE followers
   person_being_followed_id INT REFERENCES users(id)
 );
 
-INSERT INTO users (
-username, 
-email, 
-first_name, 
-last_name, 
-city, 
-state_of_residence, 
-zipcode
-)
-
+-- INSERT INTO users (
+-- username, 
+-- email, 
+-- first_name, 
+-- last_name, 
+-- city, 
+-- state_of_residence, 
+-- zipcode
+-- )
