@@ -55,7 +55,7 @@ userRouter.delete('/:id', (req, res) => {
 
     UserService.delete(id)
         .then(() => {
-            res.json({ success: `User with ID: ${id} deleted.` });
+            res.json({ success: `User with ID: ${id} deleted.` })
         })
         .catch(err => {
             res.json(err.toString());
