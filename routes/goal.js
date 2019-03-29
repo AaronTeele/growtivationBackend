@@ -4,16 +4,22 @@ const GoalService = require('../services/goal');
 
 // POST - CREATE GOAL
 goalRouter.post('/', (req, res) => {
-    // const { id } = req.params;
+    const { id } = req.params;
     const { username, goal } = req.body;
-    
-    GoalService.create(username, goal)
+    GoalService.read(id)
+    .then(() => {
+        GoalService.create( username, goal)
         .then(() => {
             res.json({ success: `${goal} has successfully been added!` });
         })
         .catch(err => {
             res.json(err.toString());
         })
+    })
+    .catch(err => {
+        res.json(err.toString());
+    })
+    
 });
 
 //GET - READ GOALS
