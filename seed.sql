@@ -28,7 +28,7 @@ CREATE TABLE users
 CREATE TABLE goals
 (
   id SERIAL PRIMARY KEY,
-  user_id INT REFERENCES users(id),
+  user_id INT REFERENCES users(id) NOT NULL,
   goal VARCHAR NOT NULL
 );
 
