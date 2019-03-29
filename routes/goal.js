@@ -40,7 +40,7 @@ goalRouter.put('/:goal_id', (req, res) => {
     const { goal_id } = req.params;
     const { goal } = req.body;
     
-    GOalService.update(goal_id, goal)
+    GoalService.update(goal_id, goal)
         .then(() => {
             res.json({ success: `${goal} has been updated` })
         })
