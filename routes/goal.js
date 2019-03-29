@@ -30,11 +30,11 @@ goalRouter.get('/', (req, res) => {
 });
 
 // PUT - UPDATE GOAL
-goalRouter.put('/:goalID', (req, res) => {
-    const { goalID } = req.params;
+goalRouter.put('/:goal_id', (req, res) => {
+    const { goal_id } = req.params;
     const { goal } = req.body;
     
-    GOalService.update(goalID, goal)
+    GOalService.update(goal_id, goal)
         .then(() => {
             res.json({ success: `${goal} has been updated` })
         })
@@ -44,10 +44,10 @@ goalRouter.put('/:goalID', (req, res) => {
 })
 
 // DELETE - DELETE GOAL
-goalRouter.delete('/goalID', (req, res) => {
-    const { goalID } = req.params;
+goalRouter.delete('/goal_id', (req, res) => {
+    const { goal_id } = req.params;
 
-    GoalService.delete(goalID)
+    GoalService.delete(goal_id)
         .then(() => {
             res.jsos({ success: `Goal has been deleted` })
         })
