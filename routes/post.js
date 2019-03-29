@@ -7,7 +7,7 @@ postRouter.post('/', (req, res) => {
     const { id } = req.params;
     const { caption, img_url } = req.body;
 
-    PostService.create( id, caption, img_url)
+    PostService.create(id, caption, img_url)
         .then(() => {
             res.json({ success: `Post successfully created.` });
         })
@@ -26,33 +26,34 @@ postRouter.get('/:post_id', (req, res) => {
         })
         .catch(err => {
             res.json(err.toString());
-});
-
-// PUT - UPDATE POST
-postRouter.put('/:post_id', (req, res) => {
-    const { post_id } = req.params;
-    const { caption } = req.body;
-    
-    PostService.update(post_id, caption)
-        .then(() => {
-            res.json({ success: `Post updated.` });
         })
-        .catch(err => {
-            res.json(err.toString());
-        })
-});
+})
 
-// DELETE - DELETE POST
-postRouter.delete('/:post_id', (req, res) => {
-    const { post_id } = req.params;
+    // PUT - UPDATE POST
+    postRouter.put('/:post_id', (req, res) => {
+        const { post_id } = req.params;
+        const { caption } = req.body;
 
-    PostService.delete(post_id)
-        .then(() => {
-            res.json({ success: `Post deleted.` });
-        })
-        .catch(err => {
-            res.json(err.toString());
-        });
-});
+        PostService.update(post_id, caption)
+            .then(() => {
+                res.json({ success: `Post updated.` });
+            })
+            .catch(err => {
+                res.json(err.toString());
+            })
+    })
 
-module.exports = postRouter;
+    // DELETE - DELETE POST
+    postRouter.delete('/:post_id', (req, res) => {
+        const { post_id } = req.params;
+
+        PostService.delete(post_id)
+            .then(() => {
+                res.json({ success: `Post deleted.` });
+            })
+            .catch(err => {
+                res.json(err.toString());
+            });
+    });
+
+    module.exports = postRouter;
