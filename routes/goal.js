@@ -7,7 +7,7 @@ goalRouter.post('/', (req, res) => {
     // const { id } = req.params;
     const { user_name, goal } = req.body;
     
-    GoalService.create(user_name, goal)
+    GoalService.create(username, goal)
         .then(() => {
             res.json({ success: `${goal} has successfully been added!` });
         })

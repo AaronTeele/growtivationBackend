@@ -2,8 +2,8 @@ const db = require('./pgpromise');
 
 const GoalService = {};
 
-GoalService.create = (user_name, goal) => {
-  return db.none('INSERT INTO goals (user_id, goal) VALUES ((SELECT id FROM users WHERE user_name = ${user_name}), ${goal})', {user_name, goal})
+GoalService.create = (username, goal) => {
+  return db.none('INSERT INTO goals (user_id, goal) VALUES ((SELECT id FROM users WHERE username = ${user_name}), ${goal})', {username, goal})
 };
 
 GoalService.read = (id) => {
