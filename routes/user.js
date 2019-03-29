@@ -36,8 +36,7 @@ userRouter.put('/:id', (req, res) => {
     UserService.read(id)
     .then(() => {
         UserService.update(id, username, email, first_name, last_name, city, state_of_residence, zipcode)
-        .then(data => {
-            const { username } = data
+        .then(() => {
             res.json({success: `${username} info updated`});
         })
         .catch(err => {
