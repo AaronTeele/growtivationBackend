@@ -51,14 +51,19 @@ userRouter.put('/:id', (req, res) => {
 // DELETE - DELETE USER
 userRouter.delete('/:id', (req, res) => {
     const { id } = req.params;
-
-    UserService.delete(id)
+    UserService.read(id)
+    .then (() => {
+        UserService.delete(id)
         .then(() => {
             res.json({ success: `User with ID: ${id} deleted.` })
         })
         .catch(err => {
             res.json(err.toString());
         })
+    })
+    .catch(err => {
+        res.json(err.toString());
+    })   
 });
 
 module.exports = userRouter;
