@@ -28,7 +28,7 @@ goalRouter.get('/', (req, res) => {
 
     GoalService.read(id)
         .then(data => {
-            res.json(data);
+            res.text(data);
         })
         .catch(err => {
             res.json(err.toString())
