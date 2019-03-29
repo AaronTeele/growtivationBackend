@@ -5,7 +5,7 @@ const GoalService = require('../services/goal');
 // POST - CREATE GOAL
 goalRouter.post('/', (req, res) => {
     // const { id } = req.params;
-    const { user_name, goal } = req.body;
+    const { username, goal } = req.body;
     
     GoalService.create(username, goal)
         .then(() => {
