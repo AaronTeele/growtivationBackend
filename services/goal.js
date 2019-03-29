@@ -9,7 +9,7 @@ GoalService.create = ( username, goal) => {
 };
 
 GoalService.read = (id) => {
-  return db.any('SELECT goal FROM goals WHERE user_id=${id}', { id })
+  return db.many('SELECT goal FROM goals WHERE user_id=${id}', { id })
 };
 
 
