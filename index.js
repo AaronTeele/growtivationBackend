@@ -27,7 +27,7 @@ app.use('/user', userRouter);
 app.use('/post/:id', postRouter);
 
 // goal routes
-app.use('/goals/:id', goalRouter);
+app.use('/goals/', goalRouter);
 
 // comment routes
 app.use('/comments/:id', commentRouter);
