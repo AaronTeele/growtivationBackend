@@ -52,7 +52,7 @@ goalRouter.put('/:goal_id', (req, res) => {
 })
 
 // DELETE - DELETE GOAL
-goalRouter.delete('/goal_id', (req, res) => {
+goalRouter.delete('/:goal_id', (req, res) => {
     const { goal_id } = req.params;
 
     GoalService.delete(goal_id)
