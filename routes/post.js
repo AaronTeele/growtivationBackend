@@ -32,9 +32,9 @@ postRouter.get('/:post_id', (req, res) => {
     // PUT - UPDATE POST
     postRouter.put('/:post_id', (req, res) => {
         const { post_id } = req.params;
-        const { caption } = req.body;
+        const { caption, img_url } = req.body;
 
-        PostService.update(post_id, caption)
+        PostService.update(post_id, caption, img_url)
             .then(() => {
                 res.json({ success: `Post updated.` });
             })
