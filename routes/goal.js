@@ -1,15 +1,16 @@
 const express = require('express');
 const goalRouter = express.Router();
 const GoalService = require('../services/goal');
+const UserService = require('../services/user')
 
 // POST - CREATE GOAL
-goalRouter.post('/:goal_id', (req, res) => {
-    const { goal_id } = req.params;
+goalRouter.post('/:id', (req, res) => {
+    const { id } = req.params;
     const { goal } = req.body;
 
-    GoalService.read(goal_id)
+    UserService.read(id)
     .then(() => {
-        GoalService.create(goal_id, goal)
+        GoalService.create(id, goal)
         .then(() => {
             res.json({ success: `${goal} has successfully been added!` });
         })
