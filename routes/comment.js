@@ -32,14 +32,20 @@ commentRouter.get('/:comment_id', (req, res) => {
 commentRouter.put('/:comment_id', (req, res) => {
     const { comment_id } = req.params;
     const { content_text } = req.body;
-
-    CommentService.update(id, comment_id, content_text)
+    
+    CommentService.read = (comment_id)
+    .then(()=> {
+        CommentService.update(author_id, comment_id, content_text)
         .then(() => {
             res.json({ success: `Comment updated.` });
         })
         .catch(err => {
             res.json(err.toString());
         })
+    })
+    .catch(err => {
+        res.json(err.toString());
+    })  
 });
 
 // DELETE - DELETE COMMENT
