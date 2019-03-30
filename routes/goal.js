@@ -6,6 +6,7 @@ const GoalService = require('../services/goal');
 goalRouter.post('/', (req, res) => {
     const { id } = req.params;
     const { goal } = req.body;
+    console.log(id)
     GoalService.read(id)
     .then(() => {
         GoalService.create(id, goal)
