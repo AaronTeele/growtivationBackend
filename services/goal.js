@@ -11,7 +11,7 @@ GoalService.read = (goal_id) => {
 
 
 GoalService.update = (goal_id, goal) => {
-  return db.none('UPDATE goals SET goal=${goal} WHERE id=${goal_id}', { goal_id, goal })
+  return db.none('UPDATE goals SET goal=${goal}, updatedAt=NOW() WHERE id=${goal_id}', { goal_id, goal })
 };
 
 GoalService.delete = (goal_id) => {

@@ -4,10 +4,9 @@ const CommentService = require('../services/comment');
 
 // POST - CREATE COMMENT
 commentRouter.post('/', (req, res) => {
-    const { id } = req.params;
-    const { post_id, content_text } = req.body;
+    const { post_id, author_id, content_text } = req.body;
 
-    CommentService.create(id, post_id, content_text)
+    CommentService.create(post_id, author_id, content_text)
         .then(() => {
             res.json({ success: `Comment created.` });
         })
@@ -17,8 +16,8 @@ commentRouter.post('/', (req, res) => {
 });
 
 // GET - READ COMMENT
-commentRouter.get('/', (req, res) => {
-    const { id } = req.params;
+commentRouter.get('/:comment_id', (req, res) => {
+    const { comment_id } = req.params;
 
     CommentService.read(id)
         .then(data => {

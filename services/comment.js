@@ -2,8 +2,8 @@ const db = require('./pgpromise');
 
 const CommentService = {};
 
-CommentService.create = (id, post_id, content_text) => {
-    return db.one('INSERT INTO comments (post_id, authorID, content_text) VALUES (${post_id}, ${id}, ${content_text})', { id, post_id, content_text })
+CommentService.create = (post_id, author_id, content_text) => {
+    return db.one('INSERT INTO comments (post_id, author_id, content_text) VALUES (${post_id}, ${author_id}, ${content_text})', { post_id, author_id, content_text })
 };
 
 CommentService.read = (id) => {
@@ -11,7 +11,7 @@ CommentService.read = (id) => {
 };
 
 CommentService.update = (id, comment_id, content_text) => {
-    return db.none('UPDATE comments SET content_text=${content_text} WHERE id=${comment_id}, authorID={id}', { id, comment_id, content_text });
+    return db.none('UPDATE comments SET content_text=${content_text}, updatedAt=NOW() WHERE id=${comment_id}, authorID={id}', { id, comment_id, content_text });
 };
 
 CommentService.delete = (comment_id) => {
