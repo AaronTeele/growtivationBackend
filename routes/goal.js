@@ -57,7 +57,7 @@ goalRouter.delete('/goal_id', (req, res) => {
 
     GoalService.delete(goal_id)
         .then(() => {
-            res.jsos({ success: `Goal has been deleted` })
+            res.json({ success: `Goal has been deleted` })
         })
         .catch(err => {
             res.json(err.toString())
