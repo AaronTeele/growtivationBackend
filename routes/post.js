@@ -34,13 +34,18 @@ postRouter.get('/:post_id', (req, res) => {
         const { post_id } = req.params;
         const { caption, img_url } = req.body;
         PostService.read(post_id)
-        PostService.update(post_id, caption, img_url)
+        .then(() => {
+            PostService.update(post_id, caption, img_url)
             .then(() => {
                 res.json({ success: `Post updated.` });
             })
             .catch(err => {
                 res.json(err.toString());
             })
+        })
+        .catch(err => {
+            res.json(err.toString());
+        })
     })
 
     // DELETE - DELETE POST
