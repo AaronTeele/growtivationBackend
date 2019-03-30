@@ -33,7 +33,7 @@ postRouter.get('/:post_id', (req, res) => {
     postRouter.put('/:post_id', (req, res) => {
         const { post_id } = req.params;
         const { caption, img_url } = req.body;
-
+        PostService.read(post_id)
         PostService.update(post_id, caption, img_url)
             .then(() => {
                 res.json({ success: `Post updated.` });
