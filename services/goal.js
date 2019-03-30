@@ -8,8 +8,8 @@ GoalService.create = ( id, goal) => {
   // return db.none('INSERT INTO goals (user_id, goal) VALUES ((SELECT id FROM users WHERE username = ${username}), ${goal})', {username, goal})
 };
 
-GoalService.read = (id) => {
-  return db.any('SELECT user_id, goal FROM goals WHERE user_id=${id}', { id })
+GoalService.read = (goal_id) => {
+  return db.any('SELECT user_id, goal FROM goals WHERE user_id=${goal_id}', { goal_id })
 };
 
 

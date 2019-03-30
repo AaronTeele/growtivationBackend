@@ -24,10 +24,10 @@ goalRouter.post('/', (req, res) => {
 });
 
 //GET - READ GOALS
-goalRouter.get('/', (req, res) => {
-    const { id } = req.params;
+goalRouter.get('/:goal_id', (req, res) => {
+    const { goal_id } = req.params;
 
-    GoalService.read(id)
+    GoalService.read(goal_id)
         .then(data => {
             res.json(data);
         })
