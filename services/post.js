@@ -2,12 +2,12 @@ const db = require('./pgpromise')
 
 const PostService = {};
 
-PostService.create = (id, caption = " ", img_url = " ") => {
+PostService.create = (id, caption = null, img_url = null) => {
   return db.none('INSERT INTO posts (author_id, caption, img_url) VALUES (${id}, ${caption}, ${img_url})', {id, caption, img_url})
 };
 
 PostService.read = (post_id) => {
-  return db.one('SELECT username FROM users WHERE id=${postID}', {post_id});
+  return db.one('SELECT username FROM posts WHERE id=${post_id}', {post_id});
 };
 
 PostService.update = (post_id, caption) => {
