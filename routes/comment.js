@@ -5,9 +5,9 @@ const CommentService = require('../services/comment');
 // POST - CREATE COMMENT
 commentRouter.post('/', (req, res) => {
     const { id } = req.params;
-    const { postID, content_text } = req.body;
+    const { post_id, content_text } = req.body;
 
-    CommentService.create(id, postID, content_text)
+    CommentService.create(id, post_id, content_text)
         .then(() => {
             res.json({ success: `Comment created.` });
         })
@@ -30,12 +30,12 @@ commentRouter.get('/', (req, res) => {
 });
 
 // PUT - UPDATE COMMENT
-commentRouter.put('/:commentID', (req, res) => {
-    const { id, commentID } = req.params;
+commentRouter.put('/:comment_id', (req, res) => {
+    const { id, comment_id } = req.params;
     const { content_text } = req.body;
 
 
-    CommentService.update(id, commentID, content_text)
+    CommentService.update(id, comment_id, content_text)
         .then(() => {
             res.json({ success: `Comment updated.` });
         })
@@ -45,12 +45,12 @@ commentRouter.put('/:commentID', (req, res) => {
 });
 
 // DELETE - DELETE COMMENT
-commentRouter.delete('/:commentID', (req, res) => {
-    const { commentID } = req.params;
+commentRouter.delete('/:comment_id', (req, res) => {
+    const { comment_id } = req.params;
 
-    CommentService.delete(commentID)
+    CommentService.delete(comment_id)
         .then(() => {
-            res.json({ success: `Comment ${commentID} deleted.` });
+            res.json({ success: `Comment ${comment_id} deleted.` });
         })
         .catch(err => {
             res.json(err.toString());

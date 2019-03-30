@@ -12,10 +12,10 @@ DROP TABLE IF EXISTS followers CASCADE;
 CREATE TABLE users
 (
   id SERIAL PRIMARY KEY,
-  username VARCHAR NOT NULL,
+  username VARCHAR UNIQUE NOT NULL,
   first_name VARCHAR NOT NULL,
   last_name VARCHAR NOT NULL,
-  email VARCHAR NOT NULL,
+  email UNIQUE VARCHAR NOT NULL,
   city VARCHAR NOT NULL,
   state_of_residence VARCHAR NOT NULL,
   zipcode INT NOT NULL,
@@ -65,13 +65,3 @@ CREATE TABLE followers
   person_following_id INT REFERENCES users(id),
   person_being_followed_id INT REFERENCES users(id)
 );
-
--- INSERT INTO users (
--- username, 
--- email, 
--- first_name, 
--- last_name, 
--- city, 
--- state_of_residence, 
--- zipcode
--- )
