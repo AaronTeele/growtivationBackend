@@ -24,19 +24,19 @@ app.use('/', homeRouter)
 app.use('/user', userRouter);
 
 // post routes
-app.use('/post/:id', postRouter);
+app.use('/post', postRouter);
 
 // goal routes
-app.use('/goals/', goalRouter);
+app.use('/goals', goalRouter);
 
 // comment routes
-app.use('/comments/:id', commentRouter);
+app.use('/comments', commentRouter);
 
 // like routes
-app.use('/like/:id', likeRouter);
+app.use('/like', likeRouter);
 
 // follower routes
-app.use('/follower/:id', followerRouter);
+app.use('/follower', followerRouter);
 
 module.exports = { app }
 const port = process.env.PORT || 3000;
