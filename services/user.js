@@ -11,7 +11,7 @@ UserService.read = (email) => {
 };
 
 UserService.update = (email, auth_token) => {
-  return db.none('UPDATE users SET email=${email}, ${auth_token}', {email, auth_token});
+  return db.none('UPDATE users SET email=${email}, auth_token${auth_token}', {email, auth_token});
 };
 
 
