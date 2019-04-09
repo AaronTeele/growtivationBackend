@@ -48,7 +48,7 @@ userRouter.put('/', (req, res) => {
 });
 
 // DELETE - DELETE USER
-userRouter.delete('/:id', (req, res) => {
+userRouter.delete('/', (req, res) => {
     const { email } = req.body;
     UserService.read(email)
     .then (() => {
