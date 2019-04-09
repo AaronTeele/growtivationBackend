@@ -4,11 +4,11 @@ const UserService = require('../services/user');
 
 // POST - CREATE USER
 userRouter.post('/', (req, res) => {
-    const { username, email, first_name, last_name, city, state_of_residence, zipcode } = req.body;
+    const {  email, auth_token } = req.body;
 
-    UserService.create(username, email, first_name, last_name, city, state_of_residence, zipcode)
+    UserService.create(email, auth_token)
         .then(() => {
-            res.json({ success: `User with name: ${username} created.` })
+            res.json({ success: `User with name: ${email} created.` })
         })
         .catch(err => {
             res.json(err.toString())
@@ -31,13 +31,13 @@ userRouter.get('/:id', (req, res) => {
 // PUT - UPDATE USER
 userRouter.put('/:id', (req, res) => {
     const { id } = req.params;
-    const { username, email, first_name, last_name, city, state_of_residence, zipcode } = req.body;
+    const { email, auth_token } = req.body;
 
     UserService.read(id)
     .then(() => {
-        UserService.update(id, username, email, first_name, last_name, city, state_of_residence, zipcode)
+        UserService.update(id, email, auth_token)
         .then(() => {
-            res.json({success: `${username} info updated`});
+            res.json({success: `${email} info updated`});
         })
         .catch(err => {
             res.json(err.toString());

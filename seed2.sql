@@ -1,3 +1,13 @@
+-- DROP DATABASE growtivation;
+-- CREATE DATABASE growtivation;
+
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS goals CASCADE;
+DROP TABLE IF EXISTS posts CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
+DROP TABLE IF EXISTS likes CASCADE;
+DROP TABLE IF EXISTS followers CASCADE;
+
 CREATE TABLE users
 (
   id SERIAL PRIMARY KEY,
@@ -54,3 +64,26 @@ CREATE TABLE followers
   person_following_id INT REFERENCES users(id) NOT NULL,
   person_being_followed_id INT REFERENCES users(id) NOT NULL
 );  
+
+
+INSERT INTO users (email, auth_token) 
+VALUES ('Dany@westeros.gov', 99999);
+
+INSERT INTO users (email, auth_token) 
+VALUES ('Homer_Simpson@SNPP.com', 11111);
+
+INSERT INTO users (email, auth_token) 
+VALUES ('bean@dreamland.gov', 87321);
+
+INSERT INTO posts (author_id, caption) 
+VALUES (3, 'Who wants to get some drinks!!');
+
+INSERT INTO comments (post_id, author_id, content_text) 
+VALUES (1, 2, 'Woohoo!!!');
+
+INSERT INTO comments (post_id, author_id, content_text) 
+VALUES (1, 1, 'Not until you #BENDTHEKNEE');
+
+INSERT INTO comments (post_id, author_id, content_text) 
+VALUES (1, 2, 'Doh!');
+
