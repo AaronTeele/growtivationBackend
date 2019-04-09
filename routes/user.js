@@ -16,7 +16,7 @@ userRouter.post('/', (req, res) => {
 });
 
 // GET - READ USER
-userRouter.get('/', (req, res) => {
+userRouter.get('/:id', (req, res) => {
     const { email } = req.body;
 
     UserService.read(email)
@@ -29,7 +29,7 @@ userRouter.get('/', (req, res) => {
 });
 
 // PUT - UPDATE USER
-userRouter.put('/', (req, res) => {
+userRouter.put('/:id', (req, res) => {
     const { email, auth_token } = req.body;
 
     UserService.read(email)
@@ -48,13 +48,13 @@ userRouter.put('/', (req, res) => {
 });
 
 // DELETE - DELETE USER
-userRouter.delete('/', (req, res) => {
+userRouter.delete('/:id', (req, res) => {
     const { email } = req.body;
     UserService.read(email)
     .then (() => {
         UserService.delete(email)
         .then(() => {
-            res.json({ success: `User with ID: ${email} deleted.` })
+            res.json({ success: `User ${email} deleted.` })
         })
         .catch(err => {
             res.json(err.toString());
