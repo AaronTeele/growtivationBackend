@@ -10,8 +10,8 @@ UserService.read = (email) => {
   return db.one('SELECT * FROM users WHERE email=${email};', { email });
 };
 
-UserService.update = (email, auth_token) => {
-  return db.none('UPDATE users SET email=${email}, auth_token=${auth_token}', {email, auth_token});
+UserService.update = (auth_token) => {
+  return db.none('UPDATE users SET auth_token=${auth_token}', {auth_token});
 };
 
 
