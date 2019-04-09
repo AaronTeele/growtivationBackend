@@ -12,8 +12,8 @@ CREATE TABLE users
 (
   id SERIAL PRIMARY KEY,
   email VARCHAR UNIQUE NOT NULL,
-  avatar VARCHAR,
   auth_token VARCHAR NOT NULL,
+  avatar VARCHAR,  
   createdAt TIMESTAMP DEFAULT NOW(),
   updatedAt TIMESTAMP DEFAULT NOW()
   -- username VARCHAR UNIQUE,
@@ -67,13 +67,13 @@ CREATE TABLE followers
 
 
 INSERT INTO users (email, auth_token) 
-VALUES ('Dany@westeros.gov', 99999);
+VALUES ('Dany@westeros.gov', 'kdfl,88');
 
 INSERT INTO users (email, auth_token) 
-VALUES ('Homer_Simpson@SNPP.com', 11111);
+VALUES ('Homer_Simpson@SNPP.com', 'lkjh879');
 
 INSERT INTO users (email, auth_token) 
-VALUES ('bean@dreamland.gov', 87321);
+VALUES ('bean@dreamland.gov', 'asdf123');
 
 INSERT INTO posts (author_id, caption) 
 VALUES (3, 'Who wants to get some drinks!!');
@@ -86,4 +86,3 @@ VALUES (1, 1, 'Not until you #BENDTHEKNEE');
 
 INSERT INTO comments (post_id, author_id, content_text) 
 VALUES (1, 2, 'Doh!');
-

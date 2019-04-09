@@ -6,8 +6,8 @@ UserService.create = (email, auth_token) => {
   return db.none('INSERT INTO users (email, auth_token) VALUES (${email}, ${auth_token});', { email, auth_token })
 };
 
-UserService.read = (id) => {
-  return db.one('SELECT * FROM users WHERE id=${id};', { id });
+UserService.read = (email) => {
+  return db.one('SELECT * FROM users WHERE email=${email};', { email });
 };
 
 UserService.update = (email, auth_token) => {
@@ -15,8 +15,8 @@ UserService.update = (email, auth_token) => {
 };
 
 
-UserService.delete = (id) => {
-  return db.none('DELETE FROM users WHERE id=${id};', { id });
+UserService.delete = (email) => {
+  return db.none('DELETE FROM users WHERE email=${email};', { email });
 };
 
 module.exports = UserService;

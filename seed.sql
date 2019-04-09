@@ -2,8 +2,8 @@ CREATE TABLE users
 (
   id SERIAL PRIMARY KEY,
   email VARCHAR UNIQUE NOT NULL,
+  auth_token VARCHAR UNIQUE NOT NULL,
   avatar VARCHAR,
-  auth_token VARCHAR NOT NULL,
   createdAt TIMESTAMP DEFAULT NOW(),
   updatedAt TIMESTAMP DEFAULT NOW()
   -- username VARCHAR UNIQUE,

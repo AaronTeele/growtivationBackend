@@ -8,7 +8,7 @@ userRouter.post('/', (req, res) => {
 
     UserService.create(email, auth_token)
         .then(() => {
-            res.json({ success: `User with name: ${email} created.` })
+            res.json({ success: `User with email: ${email} created.` })
         })
         .catch(err => {
             res.json(err.toString())
@@ -16,10 +16,10 @@ userRouter.post('/', (req, res) => {
 });
 
 // GET - READ USER
-userRouter.get('/:id', (req, res) => {
-    const { id } = req.params;
+userRouter.get('/', (req, res) => {
+    const { email } = req.body;
 
-    UserService.read(id)
+    UserService.read(email)
         .then(data => {
             res.json(data)
         })
@@ -29,13 +29,12 @@ userRouter.get('/:id', (req, res) => {
 });
 
 // PUT - UPDATE USER
-userRouter.put('/:id', (req, res) => {
-    const { id } = req.params;
+userRouter.put('/', (req, res) => {
     const { email, auth_token } = req.body;
 
-    UserService.read(id)
+    UserService.read(email)
     .then(() => {
-        UserService.update(id, email, auth_token)
+        UserService.update(email, auth_token)
         .then(() => {
             res.json({success: `${email} info updated`});
         })
