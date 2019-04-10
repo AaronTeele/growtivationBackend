@@ -8,7 +8,7 @@ PostService.create = (id, caption = null, img_url = null) => {
 };
 
 PostService.read = (post_id) => {
-  return db.any('SELECT caption, img_url, createdAt, updatedAt FROM posts ', {post_id});
+  return db.one('SELECT caption, img_url, createdAt, updatedAt FROM posts WHERE id=${post_id}', {post_id});
 };
 
 PostService.update = (post_id, caption = null, img_url = null) => {
