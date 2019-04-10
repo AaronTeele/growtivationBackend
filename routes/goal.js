@@ -4,11 +4,10 @@ const GoalService = require('../services/goal');
 const UserService = require('../services/user')
 
 // POST - CREATE GOAL
-goalRouter.post('/:id', (req, res) => {
-    const { id } = req.params;
-    const { goal } = req.body;
+goalRouter.post('/', (req, res) => {
+    const { email, goal } = req.body;
 
-    UserService.read(id)
+    UserService.read(email)
     .then(() => {
         GoalService.create(id, goal)
         .then(() => {
