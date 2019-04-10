@@ -3,11 +3,11 @@ const postRouter = express.Router();
 const PostService = require('../services/post');
 
 // POST - CREATE POST
-postRouter.post('/:id', (req, res) => {
-    const { id } = req.params;
+postRouter.post('/:post_id', (req, res) => {
+    const { post_id } = req.params;
     const { caption, img_url } = req.body;
 
-    PostService.create(id, caption, img_url)
+    PostService.create(post_id, caption, img_url)
         .then(() => {
             res.json({ success: `Post successfully created.` });
         })
