@@ -3,7 +3,7 @@ const db = require('./pgpromise')
 const PostService = {};
 
 PostService.create = (id, caption = null, img_url = null) => {
-  if (!caption && !img_url) err
+  if (!caption && !img_url) err;
   return db.none('INSERT INTO posts (author_id, caption, img_url) VALUES (${id}, ${caption}, ${img_url})', {id, caption, img_url})
 };
 
