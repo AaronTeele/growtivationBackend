@@ -36,7 +36,7 @@ commentRouter.put('/:post_id/:comment_id', (req, res) => {
     
     CommentService.read = (comment_id)
     .then(()=> {
-        CommentService.update(author_id, comment_id, content_text)
+        CommentService.update(comment_id, content_text)
         .then(() => {
             res.json({ success: `Comment updated.` });
         })
