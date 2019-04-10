@@ -3,6 +3,7 @@ const db = require('./pgpromise');
 const CommentService = {};
 
 CommentService.create = (post_id, author_id, content_text) => {
+    console.log(req.params, 'here', req.params.post_id)
     return db.none('INSERT INTO comments (post_id, author_id, content_text) VALUES (${post_id}, ${author_id}, ${content_text})', { post_id, author_id, content_text })
 };
 
