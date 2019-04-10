@@ -17,7 +17,7 @@ commentRouter.post('/:post_id', (req, res) => {
 });
 
 // GET - READ COMMENT
-commentRouter.get('/:post_id/:comment_id', (req, res) => {
+commentRouter.get('/:comment_id', (req, res) => {
     const { comment_id } = req.params;
 
     CommentService.read(comment_id)
