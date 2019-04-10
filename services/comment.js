@@ -11,7 +11,7 @@ CommentService.read = (comment_id) => {
 };
 
 CommentService.update = (author_id, comment_id, content_text) => {
-    return db.none('UPDATE comments SET content_text=${content_text}, updatedAt=NOW() WHERE id=${comment_id}, author_id={author_id}', { author_id, comment_id, content_text });
+    return db.none('UPDATE comments SET content_text=${content_text}, updatedAt=NOW() WHERE id=${comment_id}, author_id={author_id};', { author_id, comment_id, content_text });
 };
 
 CommentService.delete = (comment_id) => {
