@@ -49,25 +49,6 @@ commentRouter.put('/:post_id/:comment_id', (req, res) => {
         })
 });
 
-// PUT - UPDATE POST
-postRouter.put('/:post_id', (req, res) => {
-    const { post_id } = req.params;
-    const { caption, img_url } = req.body;
-    PostService.read(post_id)
-        .then(() => {
-            PostService.update(post_id, caption, img_url)
-                .then(() => {
-                    res.json({ success: `Post updated.` });
-                })
-                .catch(err => {
-                    res.json(err.toString());
-                })
-        })
-        .catch(err => {
-            res.json(err.toString());
-        })
-    })
-
 // DELETE - DELETE COMMENT
 commentRouter.delete('/:comment_id', (req, res) => {
     const { comment_id } = req.params;
