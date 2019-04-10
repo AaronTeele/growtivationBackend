@@ -30,24 +30,42 @@ commentRouter.get('/:post_id/:comment_id', (req, res) => {
 });
 
 // PUT - UPDATE COMMENT
+// commentRouter.put('/:post_id/:comment_id', (req, res) => {
+//     const { comment_id } = req.params;
+//     const { content_text } = req.body;
+
+//     CommentService.read = (comment_id)
+//         .then(() => {
+//             CommentService.update(comment_id, content_text)
+//                 .then(() => {
+//                     res.json({ success: `Comment updated.` })
+//                 })
+//                 .catch(err => {
+//                     res.json(err.toString())
+//                 })
+//         })
+//         .catch(err => {
+//             res.json(err.toString());
+//         })
+// });
+
+// PUT - UPDATE POST
 commentRouter.put('/:comment_id', (req, res) => {
     const { comment_id } = req.params;
     const { content_text } = req.body;
-    
-    CommentService.read = (comment_id)
-    .then(()=> {
-        CommentService.update(comment_id, content_text)
+    CommentService.read(comment_id)
         .then(() => {
-            res.json({ success: `Comment updated.` });
+            CommentService.update(comment_id, content_text)
+                .then(() => {
+                    res.json({ success: `Comment updated.` });
+                })
+                .catch(err => {
+                    res.json(err.toString());
+                })
         })
         .catch(err => {
             res.json(err.toString());
         })
-    })
-    .catch(err => {
-        res.json(err.toString());
-    })  
-});
 
 // DELETE - DELETE COMMENT
 commentRouter.delete('/:comment_id', (req, res) => {
