@@ -30,7 +30,7 @@ app.use('/post', postRouter);
 app.use('/goals', goalRouter);
 
 // comment routes
-app.use('/post/:post_id/comments', commentRouter);
+app.use('/comments/:post_id/', commentRouter);
 
 // like routes
 app.use('/like', likeRouter);
