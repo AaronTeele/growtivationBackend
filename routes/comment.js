@@ -3,8 +3,9 @@ const commentRouter = express.Router();
 const CommentService = require('../services/comment');
 
 // POST - CREATE COMMENT
-commentRouter.post('/', (req, res) => {
-    const { post_id, author_id, content_text } = req.body;
+commentRouter.post('/comments', (req, res) => {
+    const { post_id } = req.params;
+    const { author_id, content_text } = req.body;
 
     CommentService.create(post_id, author_id, content_text)
         .then(() => {
