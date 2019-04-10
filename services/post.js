@@ -8,11 +8,12 @@ PostService.create = (id, caption = null, img_url = null) => {
 };
 
 PostService.read = (post_id) => {
-  return db.one('SELECT caption, img_url, createdAt FROM posts WHERE id=${post_id}', {post_id});
+  return db.one('SELECT caption, img_url, createdAt, updatedAt FROM posts WHERE id=${post_id}', {post_id});
 };
 
 PostService.update = (post_id, caption = null, img_url = null) => {
-  return db.none('UPDATE posts SET caption=${caption}, img_url=${img_url}, updatedAt=NOW() WHERE id=${post_id}', {post_id, caption, img_url});
+  if (!caption && !img_url) err;
+  return db.none('UPDATE posts SET caption=${caption}, img_url=${img_url}, updatedAt=NOW();', {post_id, caption, img_url});
 };
 
 PostService.delete = (post_id) => {
