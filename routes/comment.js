@@ -30,7 +30,7 @@ commentRouter.get('/:post_id/:comment_id', (req, res) => {
 });
 
 // PUT - UPDATE COMMENT
-commentRouter.put('/:post_id/:comment_id', (req, res) => {
+commentRouter.put('/:comment_id', (req, res) => {
     const { comment_id } = req.params;
     const { content_text } = req.body;
     
