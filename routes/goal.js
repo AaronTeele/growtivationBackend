@@ -13,7 +13,7 @@ goalRouter.post('/', (req, res) => {
         })
         .catch(err => {
             res.json(err.toString());
-        })
+        })  
 });
 
 //GET - READ GOALS
