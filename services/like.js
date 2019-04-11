@@ -3,7 +3,7 @@ const db = require('./pgpromise')
 const LikeService = {};
 
 LikeService.create = (id, post_id) => {
-  return db.none('INSERT INTO likes (person_liked_id, postID) VALUES ${id}, ${post_id})', {id, post_id})
+  return db.none('INSERT INTO likes (person_liked_id, post_id) VALUES ${id}, ${post_id})', {id, post_id})
 };
 
 LikeService.read = (id) => {
