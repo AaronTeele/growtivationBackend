@@ -1,11 +1,11 @@
 const express = require('express');
 const goalRouter = express.Router();
 const GoalService = require('../services/goal');
-const UserService = require('../services/user')
+
 
 // POST - CREATE GOAL
 goalRouter.post('/', (req, res) => {
-    const { email, goal } = req.body;
+    const { id, goal } = req.body;
 
     GoalService.create(id, goal)
         .then(() => {
