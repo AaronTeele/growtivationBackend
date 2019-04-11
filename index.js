@@ -33,7 +33,7 @@ app.use('/comments', commentRouter);
 app.use('/goals', goalRouter);
 
 // like routes
-app.use('/like', likeRouter);
+app.use('/likes', likeRouter);
 
 // follower routes
 app.use('/follower', followerRouter);

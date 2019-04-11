@@ -3,11 +3,11 @@ const likeRouter = express.Router();
 const LikeService = require('../services/like');
 
 // POST - CREATE LIKE
-likeRouter.post('/', (req, res) => {
-    const { id } = req.params;
-    const { postID } = req.body;
+likeRouter.post('/:post_id', (req, res) => {
+    const { post_id } = req.params;
+    const { id } = req.body;
 
-    LikeService.create(id, postID)
+    LikeService.create(id, post_id)
         .then(() => {
             res.json({ success: `Post liked.` });
         })

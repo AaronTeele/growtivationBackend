@@ -18,7 +18,7 @@ CREATE TABLE goals
 (
   id SERIAL PRIMARY KEY,
   user_id INT REFERENCES users(id) NOT NULL,
-  goal VARCHAR NOT NULL
+  goal VARCHAR NOT NULL,
   createdAt TIMESTAMP DEFAULT NOW(),
   updatedAt TIMESTAMP DEFAULT NOW()
 );
@@ -46,9 +46,10 @@ CREATE TABLE goals
   CREATE TABLE likes
   (
     id SERIAL PRIMARY KEY,
-    person_liked_id INT REFERENCES users(id) NOT NULL,
     post_id INT REFERENCES posts(id) NOT NULL,
-    createdAt TIMESTAMP DEFAULT NOW()
+    person_liked_id INT REFERENCES users(id) NOT NULL,
+    createdAt TIMESTAMP DEFAULT NOW(),
+    updatedAt TIMESTAMP DEFAULT NOW()    
   );
 
   CREATE TABLE followers
