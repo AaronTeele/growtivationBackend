@@ -7,7 +7,7 @@ likeRouter.post('/:post_id', (req, res) => {
     const { post_id } = req.params;
     const { id } = req.body;
 
-    LikeService.create(id, post_id)
+    LikeService.create(post_id, id)
         .then(() => {
             res.json({ success: `Post liked.` });
         })
@@ -30,10 +30,10 @@ likeRouter.get('/', (req, res) => {
 });
 
 // DELETE - DELETE LIKE
-likeRouter.delete('/:postID', (req, res) => {
-    const { id, postID } = req.params;
+likeRouter.delete('/:post_id', (req, res) => {
+    const { post_id, id } = req.params;
 
-    LikeService.delete(id, postID)
+    LikeService.delete(post_id, id)
         .then(() => {
             res.json({ success: `Post unliked.` });
         })
