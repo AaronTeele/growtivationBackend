@@ -17,7 +17,7 @@ likeRouter.post('/:post_id', (req, res) => {
 });
 
 // GET - READ LIKES
-likeRouter.get('/', (req, res) => {
+likeRouter.get('/:id', (req, res) => {
     const { id } = req.params;
 
     likeService.read(id)
