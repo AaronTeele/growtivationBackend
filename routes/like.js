@@ -20,7 +20,7 @@ likeRouter.post('/:post_id', (req, res) => {
 likeRouter.get('/:id', (req, res) => {
     const { id } = req.params;
 
-    likeService.read(id)
+    LikeService.read(id)
         .then(data => {
             res.json(data);
         })
