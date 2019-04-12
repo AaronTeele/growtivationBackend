@@ -11,7 +11,7 @@ LikeService.read = (id) => {
 };
 
 LikeService.delete = (post_id, id) => {
-  return db.none('DELETE * FROM likes WHERE (post_id=${post_id}, person_liked_id=${id});', {post_id, id});
+  return db.none('DELETE FROM likes WHERE (post_id=${post_id}, person_liked_id=${id});', {post_id, id});
 };
 
 module.exports = LikeService;
