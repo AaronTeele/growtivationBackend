@@ -31,7 +31,8 @@ likeRouter.get('/:id', (req, res) => {
 
 // DELETE - DELETE LIKE
 likeRouter.delete('/:post_id', (req, res) => {
-    const { post_id, id } = req.params;
+    const { post_id } = req.params;
+    const { id } = req.body;
 
     LikeService.delete(post_id, id)
         .then(() => {
