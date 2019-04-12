@@ -11,7 +11,7 @@ FollowerService.read = (id) => {
 };
 
 FollowerService.delete = (id, followed_id) => {
-    return db.none('DELETE * FROM followers WHERE person_following_id=${id}, person_being_followed_id=${followed_id};', {id, followed_id});
+    return db.none('DELETE FROM followers WHERE person_following_id=${id}, person_being_followed_id=${followed_id};', {id, followed_id});
 };
 
 module.exports = FollowerService;
