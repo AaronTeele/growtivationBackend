@@ -16,7 +16,7 @@ followerRouter.post('/:followed_id', (req, res) => {
 });
 
 // GET - READ FOLLOWERS
-followerRouter.get('/', (req, res) => {
+followerRouter.get('/:id', (req, res) => {
     const { id } = req.params;
 
     FollowerService.read(id)
@@ -29,12 +29,13 @@ followerRouter.get('/', (req, res) => {
 });
 
 // DELETE - STOP FOLLOWING
-followerRouter.delete('/:followedID', (req, res) => {
-    const { id, followedID } = req.params;
+followerRouter.delete('/:followed_id', (req, res) => {
+    const { followed_id } = req.params;
+    const { id } = req.body;
 
-    FollowerService.delete(id, followedID)
+    FollowerService.delete(id, followed_id)
         .then(() => {
-            res.json({ success: `${followedID} unfollowed.` });
+            res.json({ success: `${followed_id} unfollowed.` });
         })
         .catch(err => {
             res.json(err.toString());
