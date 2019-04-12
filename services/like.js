@@ -7,7 +7,7 @@ LikeService.create = (post_id, id) => {
 };
 
 LikeService.read = (id) => {
-  return db.one('SELECT * FROM likes WHERE person_liked_id=${id};', {id});
+  return db.any('SELECT * FROM likes WHERE person_liked_id=${id};', {id});
 };
 
 LikeService.delete = (post_id, id) => {
