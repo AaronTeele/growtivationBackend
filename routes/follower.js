@@ -3,12 +3,12 @@ const followerRouter = express.Router();
 const FollowerService = require('../services/follower');
 
 // POST - FOLLOW
-followerRouter.post('/:followedID', (req, res) => {
-    const { id , followedID} = req.params;
+followerRouter.post('/:followed_id', (req, res) => {
+    const { id , followed_id} = req.params;
 
-    FollowerService.create(id, followedID)
+    FollowerService.create(id, followed_id)
         .then(() => {
-            res.json({ success: `You are now following ${followedID}!` });
+            res.json({ success: `You are now following ${followed_id}!` });
         })
         .catch(err => {
             res.json(err.toString());
